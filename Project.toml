@@ -1,0 +1,4 @@
+name = "QRTRIS"
+uuid = "b3a63859-ca5d-4bec-a7a1-fd7a8804017c"
+authors = ["JuliaGuizardi <ju_guizardi@hotmail.com>"]
+version = "0.1.0"
