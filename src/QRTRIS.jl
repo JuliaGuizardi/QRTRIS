@@ -13,9 +13,9 @@ using LinearAlgebra
 include("auxiliars.jl")
 
 """
-    LMFactorization(A :: Matrix{Float64}, λ0 :: Float64)
+    LMFactorization(A, λ0)
 
-    Creates a mutable struct containing the QR factorization of 'A' and the value of 'λ0'.
+Creates a mutable struct containing the QR factorization of 'A' and the value of 'λ0'.
 
 """
 mutable struct LMFactorization
@@ -30,23 +30,24 @@ end
 """
     update!(LMFact :: LMFactorization, λ::Float64)
 
-    Calculates δ = λ_[k + 1] - λ_k and update the matrix using δ.
+Calculates δ = λ_[k + 1] - λ_k and update the matrix using δ.
 """
-update!(LMFact, λ::Float64)= 
+update!(LMFact :: LMFactorization, λ::Float64)= 
 begin
     if size(LMFact.A, 1) <= 2
-        throw ArgumentError("Method does not accept matrices smaller than 3 columns.")
+        error("ArgumentError : Method does not accept matrices smaller than 3 columns.")
+    else
+	δ = λ - LMFact.λ0
+	delta_update!(LMFact.A, δ) 
+	LMFact.λ0 = λ
+	return LMFact
     end
-    δ = λ - LMFact.λ0
-    delta_update!(LMFact.A, δ) 
-    LMFact.λ0 = λ
-    return LMFact
 end
 
 """
     LinearAlgebra.ldiv!(LMFact :: LMFactorization, b :: Vector{Float64}, x :: Vector{Float64})
 
-    Solves the system A'Ax = b, considering 'A' an upper triangular matrix.
+Solves the system A'Ax = b, considering 'A' an upper triangular matrix.
 """
 LinearAlgebra.ldiv!(LMFact, b, x)= 
 begin
@@ -59,4 +60,4 @@ begin
     return x
 end
 
-export  LMFactorization, update!
+export LMFactorization, update!
