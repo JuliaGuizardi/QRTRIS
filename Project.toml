@@ -2,3 +2,6 @@ name = "QRTRIS"
 uuid = "b3a63859-ca5d-4bec-a7a1-fd7a8804017c"
 authors = ["JuliaGuizardi <ju_guizardi@hotmail.com>"]
 version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
