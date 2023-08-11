@@ -3,7 +3,7 @@ using Documenter, QRTRIS
 #push!(LOAD_PATH, "../test/scripts/")
 
 makedocs(
-    assets = ["assets/icon.ico"],
+    assets = ["assets/favicon.ico"],
     sitename = "QRTRIS.jl",
     pages = ["Overview" => "index.md",
          "Theory" => "theory.md",

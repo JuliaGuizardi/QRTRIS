@@ -4,8 +4,7 @@
 ```
 ## Installation
 
-This package is supported just for Julia version 1.0. Consequently, 
-it uses package 3.0. Currently `RAFF` is registered in [General Julia Registers](https://github.com/JuliaRegistries), so the 
+This package is supported just for Julia version 1.0. Currently `QRTRIS` is registered in [General Julia Registers](https://github.com/JuliaRegistries), so the 
 package can be installed using the Julia package manager.
 From the Julia REPL, type `]` to enter into Pkg REPL mode and run:
 
@@ -61,15 +60,11 @@ With the goal of update the value of ``\lambda`` in ``A'A + \lambda I``. More of
 update!(object, 0.5)
 ```
 
-```@repl docrepl
-model(x, θ) = θ[1] * x[1] + θ[2] * x[2] + θ[3]
-```
-
-Now the upper part of the matrix `object.A` contains ``R``, such that solving  ``(A'A + \lambda I)x = b`` is equivalent to ``R'R x = b``. Moreover `object.λ` contains the last value of ``\lambda,`` in this case ``.5.``
+Now the upper part of the matrix `object.A` contains ``R``, such that solving  ``(A'A + \lambda I)x = b`` is equivalent to ``R'R x = b``. Moreover `object.λ` contains the last value of ``\lambda,`` in this case ``0.5.``
 
 ## Solve the system
 
-Now we compute the value of ``b.`` Naturally it needs to be a vector of size ``n.``
+Then we compute the value of ``b.`` Naturally it needs to be a vector of size ``n.``
 
 ```@repl docrepl
 b = [ 10.0 

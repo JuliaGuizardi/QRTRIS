@@ -31,8 +31,8 @@ end
     delta_update!(A, λ)
 
 Computes the  A_λ. It uses Givens rotations to zero the elements of the attached matrix, λI, using the matrix 'A'.
-"""
 
+"""
 delta_update!(A, λ)=
 begin
     m, n = size(A) 
